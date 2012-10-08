@@ -12,7 +12,8 @@ http://www.gnu.org/licenses/gpl.html
                 loadingtext: 'Loading image ...',
                 loadingimage: '/media/loading.gif',
                 wrapperclass: 'bg-wrapper',
-				imgpath: '/backgroundy/media/',
+				imgpath: '/media/',
+				imgs: ['img-bg1.jpg','img-bg2.jpg','img-bg3.jpg'],
 				zindexbase: 3,
 				easing: 'linear'
             }
@@ -23,18 +24,16 @@ http://www.gnu.org/licenses/gpl.html
 			var innerSpace = { w: 0, h: 0 };
 			var bgPadCurrentNo = 1;
 			var bgCurrentNo = 1;
-			var slideactivo = 1;
-			var bgCount = 6;
 			var intID_01 = '';
 
 			function prepareDOM(){
-				var html = '<div id="' + o.wrapperclass + '"><div id="bg-pad1" style="top: 0px; left:0px; display: none; z-index: ' + o.zindexfront + ';" class="bg-pad"><img src="' + o.imgpath + 'img-bg1.jpg" id="bg-img1" width="100%"></div><div id="bg-pad2" style="top: 0px; left: 0px; z-index: ' + o.zindexbase + '; display: none;" class="bg-pad"><img src="' + o.imgpath + 'img-bg1.jpg" id="bg-img2" width="100%"></div></div>';
+				var html = '<div id="' + o.wrapperclass + '"><div id="bg-pad1" style="top: 0px; left:0px; display: none; z-index: ' + o.zindexfront + ';" class="bg-pad"><img src="' + o.imgpath + o.imgs[0] +'" id="bg-img1" width="100%"></div><div id="bg-pad2" style="top: 0px; left: 0px; z-index: ' + o.zindexbase + '; display: none;" class="bg-pad"><img src="' + o.imgpath + o.imgs[0] + '" id="bg-img2" width="100%"></div></div>';
 				$('body').prepend(html);
 			};
 			slide = function() {
 				var r=bgCurrentNo;
 				while (r==bgCurrentNo) { //prevent generating same no again and again
-					r=Math.floor(Math.random()*bgCount)+1;
+					r=Math.floor(Math.random()*o.imgs.length);
 				}
 				bgCurrentNo=r;
 				loadReqBG(bgCurrentNo);
@@ -42,7 +41,7 @@ http://www.gnu.org/licenses/gpl.html
 			function loadReqBG(num) {
 				$('#bg-pad'+bgPadCurrentNo).hide();
 				//$('#loading').show();
-				$('#bg-img'+bgPadCurrentNo).attr('src', o.imgpath + 'img-bg' + num + '.jpg');
+				$('#bg-img'+bgPadCurrentNo).attr('src', o.imgpath + o.imgs[num]);
 			}
 			function onloadCrossFadeBG() {
 				if (bgPadCurrentNo==1) {
