@@ -14,6 +14,7 @@ http://www.gnu.org/licenses/gpl.html
                 wrapperclass: 'bg-wrapper',
 				imgpath: '/media/',
 				imgs: ['img-bg1.jpg','img-bg2.jpg','img-bg3.jpg'],
+				interval: 7000,
 				zindexbase: 3,
 				easing: 'linear'
             }
@@ -81,7 +82,7 @@ http://www.gnu.org/licenses/gpl.html
 			}
 			function onWindowResize( event ) {
 				innerSpace = getInnerSpace();
-				var prop =1.777777777777778; //16:9 image assumed
+				var prop = 1.777777777777778; //16:9 image assumed
 				var refH = innerSpace.h;
 				var newH = innerSpace.w/prop;
 					if (newH>=refH) {
@@ -115,7 +116,7 @@ http://www.gnu.org/licenses/gpl.html
 				$('#bg-img2').load(function() {
 					onloadCrossFadeBG();
 				});
-				intID_01 = setInterval(slide,7000);
+				intID_01 = setInterval(slide, o.interval);
             }
 			init();
         }
