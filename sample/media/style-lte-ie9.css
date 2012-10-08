@@ -1,0 +1,20 @@
+.ie-transp {
+	background:transparent;
+	filter:
+		progid:DXImageTransform.Microsoft.gradient(startColorstr=#66000000,endColorstr=#66000000);
+	zoom: 1;
+}
+.ie-shadow-pink {
+	filter:progid:DXImageTransform.Microsoft.Shadow(color='#FF1080',direction='120',strength='4');
+}
+.ie-shadow-black {
+	filter:progid:DXImageTransform.Microsoft.Shadow(color='#000000',direction='120',strength='2');
+}
+.ie-test{
+filter:
+    progid:DXImageTransform.Microsoft.MotionBlur(strength=13, direction=310)
+    progid:DXImageTransform.Microsoft.Blur(pixelradius=2)
+    progid:DXImageTransform.Microsoft.Wheel(duration=3);
+	progid:DXImageTransform.Microsoft.DropShadow(color='#000000',offX='20',offY='20');
+    progid:DXImageTransform.Microsoft.Blur(PixelRadius='15', MakeShadow='true', ShadowOpacity='0.40');
+}

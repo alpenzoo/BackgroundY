@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" id="home-page" class="no-js">
+<head>
+<meta charset="utf-8">
+<title>BackGrounder sample page</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="author" content="">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width">
+<!--[if lte IE 9]><link rel="stylesheet" href="media/style-lte-ie9.css" media="screen, projection"><![endif]-->
+<link href="http://fonts.googleapis.com/css?family=Droid+Serif:400,400italic,700|Droid+Sans:700" rel="stylesheet" type="text/css" /> 
+<link href="media/style.css" rel="stylesheet" type="text/css" media="screen, projection" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="media/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="media/modernizr.custom.js"></script>
+<script type="text/javascript" src="media/jquery.backgroundy.js"></script>
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<script>
+$(document).ready(function(){
+    $('body').backgrounder({
+		easing: 'easeInOutCubic'
+    });
+});		
+</script>
+</head>
+
+<body style="rgba">
+	<div id="contact" class="ie-transp">
+		<div id="contact-me">
+			<span>Narcis Paun</span>
+			<br />tel: +00401234567
+			<br />email: me@example.com
+		</div>
+		<div id="contact-me-ico">
+			<a class="soc" href="mailto:pfotenspass@gmail.com"><img class="contact-ico" src="media/contact-ico.png"></a>
+			<a class="soc" href="http://www.facebook.com/pfotenspass"><img class="contact-ico" src="media/fb-ico.png"></a>
+		</div>
+	</div>
+	<div id="logo"><a href="/"><img src="media/ps_logo.png"></a></div>
+	<div style="right: 0px;" id="menu-pad">
+		<ul id="menu">
+			<li id="menu-pad-about" class="m-pad ie-transp no-sel"><a class="no-sel" href="/ueber-mich/">Ueber mich</a></li>
+			<li id="menu-pad-offer" class="m-pad ie-transp no-sel"><a class="no-sel" href="/angebot/">Angebot</a></li>
+			<li id="menu-pad-more" class="m-pad ie-transp no-sel"><a class="no-sel" href="/wissenswertes/">Wissenswertes</a></li>
+			<li id="menu-pad-gallery" class="m-pad ie-transp no-sel"><a class="no-sel" href="/bilder/">Bilder</a></li>
+			<li id="menu-pad-links" class="m-pad ie-transp no-sel"><a class="no-sel" href="/links/">Links</a></li>
+		</ul>
+	</div>
+
+<div id="content">
+	<h1 class="page-title ie-shadow-pink">A heading element briefly describes the topic of the section it introduces.</h1>
+	<div class="ap ie-transp">
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		<br><br>
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		<br><br>
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	</div>
+</div>
+
+<div id="footer">
+	<div class="ap ie-transp">
+		<div class="breadcrumb">
+			<div class="breadcrumb-item" itemtype="http://data-vocabulary.org/Breadcrumb" itemscope="">
+				<a itemprop="url" href="/" class=""><span itemprop="title">HomePage</span></a>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<div class="footernav">
+			<p>
+				<a class="f-nav" href="/ueber-mich/">Ueber mich</a>&nbsp;|&nbsp;
+				<a class="f-nav" href="/angebot/">Angebot</a>&nbsp;|&nbsp;
+				<a class="f-nav" href="/wissenswertes/">Wissenswertes</a>&nbsp;|&nbsp;
+				<a class="f-nav" href="/bilder/">Bilder</a>&nbsp;|&nbsp;
+				<a class="f-nav" href="/links/">Links</a>
+			</p>
+			<p>&copy; Backgrounder</p>
+			<p class="txt-r"><a class="f-admin" href="/impressum/">Impressum</a>&nbsp;|&nbsp;<a class="f-admin" href="/datenschutz/">Datenschutz</a></p>
+		</div>
+	</div>
+</div>
+<div id="affiliation">
+	<a href="/"><img src="media/affiliation.gif"></a>
+</div>
+</body></html>
