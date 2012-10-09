@@ -24,9 +24,14 @@ $(document).ready(function(){
 		easing: 'easeInOutCubic',
 		imgpath: '/backgroundy/media/',
 		imgs: ['img-bg1.jpg','img-bg2.jpg','img-bg3.jpg','img-bg4.jpg','img-bg5.jpg','img-bg6.jpg'],
-		interval: 7000
+		interval: 7000,
+		eventcrossfade: function() {
+			//user logic
+			$('#menu-pad').animate({ right: -240 }, 400, 'linear' );
+			setTimeout("$('#menu-pad').animate({ right: 0 }, 300, 'linear');",700);	
+		}
     });
-});		
+});
 </script>
 </head>
 

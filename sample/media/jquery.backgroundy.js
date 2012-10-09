@@ -8,7 +8,8 @@ http://www.gnu.org/licenses/gpl.html
 (function ($) {
     $.fn.extend({
         backgrounder: function (options) {
-            var defaults = {
+            var _this = this;
+			var defaults = {
                 loadingtext: 'Loading image ...',
                 loadingimage: '/media/loading.gif',
                 wrapperclass: 'bg-wrapper',
@@ -16,15 +17,14 @@ http://www.gnu.org/licenses/gpl.html
 				imgs: ['img-bg1.jpg','img-bg2.jpg','img-bg3.jpg'],
 				interval: 7000,
 				zindexbase: 3,
-				easing: 'linear'
+				easing: 'linear',
+			    eventcrossfade: function(){}
             }
-            var options = $.extend(defaults, options);
-            var o = options;
+            var o = $.extend({},defaults, options);
 			o.zindexfront=o.zindexbase+1;
             var $context = $('#'+o.wrapperclass);
 			var innerSpace = { w: 0, h: 0 };
-			var bgPadCurrentNo = 1;
-			var bgCurrentNo = 1;
+			var bgPadCurrentNo = bgCurrentNo = 1;
 			var intID_01 = '';
 
 			function prepareDOM(){
@@ -56,12 +56,9 @@ http://www.gnu.org/licenses/gpl.html
 					$('#bg-pad'+bgPadCurrentNo).fadeIn(700);
 					bgPadCurrentNo=1;
 				}
-				hookCrossFade_event(); //THIS MUST BE CHANGED TO SOMETHING A LOT NICER
-			}
-			function hookCrossFade_event(){
-				//$('#loading').hide();
-				$('#menu-pad').animate({ right: -240 }, 400, o.easing );
-				setTimeout("$('#menu-pad').animate({ right: 0 }, 300, '"+o.easing+"');",700);	
+				if (o.eventcrossfade !== undefined) {
+					o.eventcrossfade.call();
+				}
 			}
 			function getInnerSpace() {
 				var w = 0, h = 0;
@@ -88,13 +85,11 @@ http://www.gnu.org/licenses/gpl.html
 					if (newH>=refH) {
 						$(".bg-pad").width(innerSpace.w);
 						$(".bg-pad").height(newH);
-						//$(".bg-pad").offset({ top: -((newH/2)-(refH/2)), left: 0});
 						$(".bg-pad").css({'top' : -((newH/2)-(refH/2)), 'left' : '0'});
 					};
 					if (newH<refH) {
 						$(".bg-pad").width(refH*prop);
 						$(".bg-pad").height(refH);
-						//$(".bg-pad").offset({ top: 0, left: -(((refH*prop)/2)-(innerSpace.w/2))});
 						$(".bg-pad").css({'top' : '0', 'left' : -(((refH*prop)/2)-(innerSpace.w/2))});
 					};
 			}
@@ -109,7 +104,6 @@ http://www.gnu.org/licenses/gpl.html
 				}
 				onWindowResize();
 				slide;
-				//$('#bg-pad2').animate({opacity:1.0},800,o.easing);
 				$('#bg-img1').load(function() {
 					onloadCrossFadeBG();
 				});
@@ -119,6 +113,16 @@ http://www.gnu.org/licenses/gpl.html
 				intID_01 = setInterval(slide, o.interval);
             }
 			init();
-        }
+
+			$.fn.backgrounder.stop = function(){
+				intID_01 = clearInterval(intID_01);
+			return _this;	
+			}
+			$.fn.backgrounder.start = function(){
+				intID_01 = setInterval(slide, o.interval);
+			return _this;
+			}
+		return this;
+		}
     });
 })(jQuery);
