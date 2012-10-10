@@ -18,7 +18,7 @@ This project was created for a website I made and is posted here hoping it may h
 
 ## Features
 
-* HTML5 ready. Use the new elements with confidence.
+* HTML5 ready.
 * Cross-browser compatible (Chrome, Opera, Safari, Firefox 3.6+, IE8+).
 * The latest [jQuery](http://jquery.com/) via CDN.
 
@@ -26,14 +26,15 @@ This project was created for a website I made and is posted here hoping it may h
 ## Documentation
 
 To use it just:
+```html
 <script>
 $(document).ready(function(){
     $('body').backgrounder({
 		easing: 'easeInOutCubic'
     });
-});		
+});
 </script>
-
+```
 ## Contributing
 
 Anyone and everyone is welcome to contribute.
