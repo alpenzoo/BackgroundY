@@ -1,13 +1,22 @@
-/*
-BackgroundY v0.5beta
-Plugin developed by: Paun Narcis
-http://1web.ro/backgroundy/
-Released under the GPL license:
-http://www.gnu.org/licenses/gpl.html
-*/
+// BackgroundY v0.5beta
+//
+// Released under the The MIT License (MIT) license:
+// Copyright (c) 2012 Paun Narcis - http://1web.ro/backgroundy/
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy,
+// modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software
+// is furnished to do so, subject to the following conditions:
+// The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS
+// BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF
+// OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
 (function ($) {
     $.fn.extend({
-        backgrounder: function (options) {
+        backgrounder: function (opt) {
             var _this = this;
 			var defaults = {
                 loadingtext: 'Loading image ...',
@@ -19,13 +28,15 @@ http://www.gnu.org/licenses/gpl.html
 				interval: 7000,
 				zindexbase: 3,
 				easing: 'linear',
+				random: true,
 			    eventcrossfade: function(){}
             }
-            var o = $.extend({},defaults, options);
+            var o = $.extend({},defaults, opt);
 			o.zindexfront=o.zindexbase+1;
             var $context = $('#'+o.wrapperclass);
 			var innerSpace = { w: 0, h: 0 };
-			var bgPadCurrentNo = bgCurrentNo = 1;
+			var bgPadCurrentNo = 1;
+			var bgCurrentNo = 0;
 			var intID_01 = '';
 
 			function prepareDOM(){
@@ -33,11 +44,15 @@ http://www.gnu.org/licenses/gpl.html
 				$('body').prepend(html);
 			};
 			slide = function() {
-				var r=bgCurrentNo;
-				while (r==bgCurrentNo) { //prevent generating same no again and again
-					r=Math.floor(Math.random()*o.imgs.length);
+				var r = bgCurrentNo;
+				if (o.random){
+					while (r == bgCurrentNo) { //prevent generating same no again and again
+						r = Math.floor(Math.random()*o.imgs.length);
+					}
+				}else{
+					if(++r >= o.imgs.length) {r = 0}
 				}
-				bgCurrentNo=r;
+				bgCurrentNo = r;				
 				loadReqBG(bgCurrentNo);
 			}
 			function loadReqBG(num) {

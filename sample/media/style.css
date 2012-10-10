@@ -113,6 +113,18 @@ h1.page-title{
 	-o-box-shadow: rgba(0,0,0, .42) 6px 6px 4px;
 	box-shadow: rgba(0,0,0, .42) 6px 6px 4px;
 }
+
+.ap ul{
+	list-style: disc outside none;
+	padding: 20px 10px 20px 40px;
+}
+pre{
+	font-family: monospace;
+	letter-spacing: -1px;
+	border: 1px solid #999;
+	padding: 10px;
+	margin: 10px;
+}
 #affiliation {
 	position: fixed;
 	z-index: 100;

@@ -23,14 +23,65 @@ $(document).ready(function(){
     $('body').backgrounder({
 		easing: 'easeInOutCubic',
 		imgpath: '/backgroundy/media/',
-		imgs: ['img-bg1.jpg','img-bg2.jpg','img-bg3.jpg','img-bg4.jpg','img-bg5.jpg','img-bg6.jpg'],
+		imgs: ['img-bg0.jpg','img-bg1.jpg','img-bg2.jpg','img-bg3.jpg','img-bg4.jpg','img-bg5.jpg','img-bg6.jpg','img-bg7.jpg','img-bg8.jpg'],
 		interval: 7000,
+		random: true,
 		eventcrossfade: function() {
 			//user logic
 			$('#menu-pad').animate({ right: -240 }, 400, 'linear' );
 			setTimeout("$('#menu-pad').animate({ right: 0 }, 300, 'linear');",700);	
 		}
     });
+});
+</script>
+
+<script>
+$(document).ready(function() {
+  function filterPath(string) {
+  return string
+    .replace(/^\//,'')
+    .replace(/(index|default).[a-zA-Z]{3,4}$/,'')
+    .replace(/\/$/,'');
+  }
+  var locationPath = filterPath(location.pathname);
+  var scrollElem = scrollableElement('html', 'body');
+ 
+  $('a[href*=#]').each(function() {
+    var thisPath = filterPath(this.pathname) || locationPath;
+    if (  locationPath == thisPath
+    && (location.hostname == this.hostname || !this.hostname)
+    && this.hash.replace(/#/,'') ) {
+      var $target = $(this.hash), target = this.hash;
+      if (target) {
+        var targetOffset = $target.offset().top;
+        $(this).click(function(event) {
+          event.preventDefault();
+          $(scrollElem).animate({scrollTop: targetOffset}, 400, function() {
+            location.hash = target;
+          });
+        });
+      }
+    }
+  });
+ 
+  // use the first element that is "scrollable"
+  function scrollableElement(els) {
+    for (var i = 0, argLength = arguments.length; i <argLength; i++) {
+      var el = arguments[i],
+          $scrollElement = $(el);
+      if ($scrollElement.scrollTop()> 0) {
+        return el;
+      } else {
+        $scrollElement.scrollTop(1);
+        var isScrollable = $scrollElement.scrollTop()> 0;
+        $scrollElement.scrollTop(0);
+        if (isScrollable) {
+          return el;
+        }
+      }
+    }
+    return [];
+  }
 });
 </script>
 </head>
@@ -43,29 +94,78 @@ $(document).ready(function(){
 			<br />web: http://www.1web.ro
 		</div>
 		<div id="contact-me-ico">
-			<a class="soc" href="mailto:pfotenspass@gmail.com"><img class="contact-ico" src="media/contact-ico.png"></a>
-			<a class="soc" href="http://www.facebook.com/pfotenspass"><img class="contact-ico" src="media/fb-ico.png"></a>
+			<a class="soc" href="#"><img class="contact-ico" src="media/contact-ico.png"></a>
+			<a class="soc" href="#"><img class="contact-ico" src="media/fb-ico.png"></a>
 		</div>
 	</div>
 	<div id="logo"><a href="/"><img src="media/ps_logo.png"></a></div>
 	<div style="right: 0px;" id="menu-pad">
 		<ul id="menu">
-			<li id="menu-pad-about" class="m-pad ie-transp no-sel"><a class="no-sel" href="/ueber-mich/">Ueber mich</a></li>
-			<li id="menu-pad-offer" class="m-pad ie-transp no-sel"><a class="no-sel" href="/angebot/">Angebot</a></li>
-			<li id="menu-pad-more" class="m-pad ie-transp no-sel"><a class="no-sel" href="/wissenswertes/">Wissenswertes</a></li>
-			<li id="menu-pad-gallery" class="m-pad ie-transp no-sel"><a class="no-sel" href="/bilder/">Bilder</a></li>
-			<li id="menu-pad-links" class="m-pad ie-transp no-sel"><a class="no-sel" href="/links/">Links</a></li>
+			<li id="menu-pad-about" class="m-pad ie-transp no-sel"><a class="no-sel" href="#a-top">Top</a></li>
+			<li id="menu-pad-offer" class="m-pad ie-transp no-sel"><a class="no-sel" href="#a-qs">Quick start</a></li>
+			<li id="menu-pad-more" class="m-pad ie-transp no-sel"><a class="no-sel" href="#a-docu">Documentation</a></li>
+			<li id="menu-pad-gallery" class="m-pad ie-transp no-sel"><a class="no-sel" href="#a-lt">Last thoughts</a></li>
+			<li id="menu-pad-links" class="m-pad ie-transp no-sel"><a class="no-sel" href="http://www.1web.ro">1web.ro</a></li>
 		</ul>
 	</div>
 
 <div id="content">
-	<h1 class="page-title ie-shadow-pink">A heading element briefly describes the topic of the section it introduces.</h1>
+	<h1 id="a-top" class="page-title ie-shadow-pink">BackgroundY, background image animations jQuery plugin</h1>
 	<div class="ap ie-transp">
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-		<br><br>
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-		<br><br>
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		<p>
+		BackgroundY is a jQuery plugin and helps create background image animations.
+		<br />
+		This plugin was created for a website I made and is posted here hoping it may help somebody. You're free to change the code in any way you want.
+		It only contains the features I needed at the time so if you need something plase ask.
+		</p>
+		<h2 id="a-qs" class="h2-content">BackgroundY Quick start</h2>
+		<p>
+		<ul>
+			<li>Download the release from <a href="https://github.com/alpenzoo/BackgroundY">https://github.com/alpenzoo/BackgroundY</a>;</li>
+			<li>call JS file from your project</li>
+		</ul>
+		</p>
+		<h2 id="a-docu" class="h2-content">BackgroundY Documentation</h2>
+		<p>
+		To use it just:<br />
+<pre>
+$(document).ready(function(){
+	$('body').backgrounder({
+		easing: 'easeInOutCubic'
+	});
+});
+</pre>
+		<br /><br />
+		other options availlable:
+		
+<ul>
+	<li>loadingtext: 'Loading image ...', [ not implemented yet :) ]</li>
+	<li>loadingimage: '/media/loading.gif',</li>
+	<li>wrapperclass: 'bg-wrapper',</li>
+	<li>imgpath: '/media/',</li>
+	<li>imgs: ['img-bg1.jpg','img-bg2.jpg','img-bg3.jpg'],</li>
+	<li>imgsaspectratio: 1.777777777777778, //16:9 image assumed</li>
+	<li>interval: 7000,</li>
+	<li>zindexbase: 3,</li>
+	<li>easing: 'linear',</li>
+	<li>eventcrossfade: function(){}</li>
+</ul>
+
+		</p>
+		<h2 id="a-lt" class="h2-content">BackgroundY last thoughts</h2>
+		<p>
+		The good part:
+		<ul>
+			<li>BackgroundY is ready made & MIT licence;</li>
+			<li>BackgroundY is simply to use due to jQuery wonderful plugin capabilities.</li>
+		</ul>
+		The bad part:
+		<ul>
+			<li>BackgroundY was created for a website I made so the features are limited to my needs;</li>
+			<li>BackgroundY currently suports just one image aspect ratio and you have to provide it;</li>
+			<li>BackgroundY is not an gallery script so no next/previous options, just stop and start in case visitors get annoyed.</li>
+		</ul>
+		</p>
 	</div>
 </div>
 
@@ -79,18 +179,18 @@ $(document).ready(function(){
 		</div>
 		<div class="footernav">
 			<p>
-				<a class="f-nav" href="/ueber-mich/">Ueber mich</a>&nbsp;|&nbsp;
-				<a class="f-nav" href="/angebot/">Angebot</a>&nbsp;|&nbsp;
-				<a class="f-nav" href="/wissenswertes/">Wissenswertes</a>&nbsp;|&nbsp;
-				<a class="f-nav" href="/bilder/">Bilder</a>&nbsp;|&nbsp;
-				<a class="f-nav" href="/links/">Links</a>
+				<a class="f-nav" href="#a-top">Top</a>&nbsp;|&nbsp;
+				<a class="f-nav" href="#a-qs">Quick start</a>&nbsp;|&nbsp;
+				<a class="f-nav" href="#a-docu">Documentation</a>&nbsp;|&nbsp;
+				<a class="f-nav" href="#a-lt">Last thoughts</a>&nbsp;|&nbsp;
+				<a class="f-nav" href="http://www.1web.ro">1web.ro</a>
 			</p>
 			<p>&copy; Backgrounder</p>
-			<p class="txt-r"><a class="f-admin" href="/impressum/">Impressum</a>&nbsp;|&nbsp;<a class="f-admin" href="/datenschutz/">Datenschutz</a></p>
+			<p class="txt-r"><a class="f-admin" href="#">Impressum</a>&nbsp;|&nbsp;<a class="f-admin" href="#">Datenschutz</a></p>
 		</div>
 	</div>
 </div>
 <div id="affiliation">
-	<a href="/"><img src="media/affiliation.gif"></a>
+	<img src="media/affiliation.gif">
 </div>
 </body></html>
