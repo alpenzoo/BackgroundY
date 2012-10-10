@@ -15,6 +15,7 @@ http://www.gnu.org/licenses/gpl.html
                 wrapperclass: 'bg-wrapper',
 				imgpath: '/media/',
 				imgs: ['img-bg1.jpg','img-bg2.jpg','img-bg3.jpg'],
+				imgsaspectratio: 1.777777777777778, //16:9 image assumed
 				interval: 7000,
 				zindexbase: 3,
 				easing: 'linear',
@@ -79,18 +80,17 @@ http://www.gnu.org/licenses/gpl.html
 			}
 			function onWindowResize( event ) {
 				innerSpace = getInnerSpace();
-				var prop = 1.777777777777778; //16:9 image assumed
 				var refH = innerSpace.h;
-				var newH = innerSpace.w/prop;
+				var newH = innerSpace.w/o.imgsaspectratio;
 					if (newH>=refH) {
 						$(".bg-pad").width(innerSpace.w);
 						$(".bg-pad").height(newH);
 						$(".bg-pad").css({'top' : -((newH/2)-(refH/2)), 'left' : '0'});
 					};
 					if (newH<refH) {
-						$(".bg-pad").width(refH*prop);
+						$(".bg-pad").width(refH * o.imgsaspectratio);
 						$(".bg-pad").height(refH);
-						$(".bg-pad").css({'top' : '0', 'left' : -(((refH*prop)/2)-(innerSpace.w/2))});
+						$(".bg-pad").css({'top' : '0', 'left' : -(((refH * o.imgsaspectratio)/2)-(innerSpace.w/2))});
 					};
 			}
             function init() {
