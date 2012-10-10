@@ -1,4 +1,7 @@
-Copyright (c) BackgroundY
+BackgroundY v0.5beta
+
+Released under the The MIT License (MIT) license:
+Copyright (c) 2012 Paun Narcis - http://1web.ro/backgroundy/
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
