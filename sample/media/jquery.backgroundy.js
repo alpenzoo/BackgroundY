@@ -32,6 +32,8 @@
 			    eventcrossfade: function(){}
             }
             var o = $.extend({},defaults, opt);
+			if ( !$.isArray(o.imgs) || (o.imgs.length<1) ){return this;} //ends plugin if no image is given
+			if(o.imgs.length<2){o.random=false;} //prevents infinite loop in the duplicate random prevention mechanism
 			o.zindexfront=o.zindexbase+1;
             var $context = $('#'+o.wrapperclass);
 			var innerSpace = { w: 0, h: 0 };
